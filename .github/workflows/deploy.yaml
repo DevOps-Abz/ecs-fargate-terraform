@@ -57,7 +57,9 @@ jobs:
         aws ecs update-service --cluster $ECS_CLUSTER \
                               --service $ECS_SERVICE \
                               --force-new-deployment
-    
-    # - name: Terraform Destroy
-    #   working-directory: ./terraform
-    #   run: terraform destroy -auto-approve
+    - name: Auto destroy after 30 minutes (TEST ONLY)
+      working-directory: ./terraform
+      run: |
+        echo "Waiting 30 minutes before destroying infrastructure..."
+        sleep 1800
+        terraform destroy -auto-approve
