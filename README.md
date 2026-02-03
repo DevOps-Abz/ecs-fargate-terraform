@@ -84,8 +84,7 @@ Docker images are hosted in Amazon Elastic Container Registry (ECR), enabling se
 
 **GitHub Actions Apply (`deploy.yaml`)**
 
-------IMPLEMENT 6 ------- Take a screen shot of [GitHub actions page ]
-!INSERT IMAGE HERE
+![Diagram](https://raw.githubusercontent.com/DevOps-Abz/ecs-fargate-terraform/images/git-actions-deploy-workflow.png)
 
    - Applies approved Terraform changes to provision/update AWS infrastructure  
    - Deploys updated containers to **AWS ECS Fargate**
