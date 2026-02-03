@@ -58,3 +58,6 @@ jobs:
                               --service $ECS_SERVICE \
                               --force-new-deployment
     
+    # - name: Terraform Destroy
+    #   working-directory: ./terraform
+    #   run: terraform destroy -auto-approve

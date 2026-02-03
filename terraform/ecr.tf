@@ -4,4 +4,5 @@ resource "aws_ecr_repository" "my_repository" {
   lifecycle {
     prevent_destroy = false
   }
+  force_delete = true  # Add this line
 }
