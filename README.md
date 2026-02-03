@@ -12,7 +12,7 @@ This project demonstrates a production-focused AWS deployment that applies DevOp
 
 ## What is delpoyed?
 
-an application 
+A Python Application 
 
 ## Key Features & Implementation:
 
@@ -31,18 +31,16 @@ an application
 - **Amazon ECR** – Centralized and secure repository for Docker images
 - **AWS VPC** – Network isolation subnets for public and private resources
 - **AWS IAM** – Implemented IAM Role for GitHub Actions authentication via OIDC for secure, short-lived credentials
-------IMPLEMENT 1----- **Application Load Balancer (ALB)** – Traffic routing, health checks, and scalability  
+ 
 
 ### Infrastructure as Code (IaC)
 - **Terraform** – Declarative AWS infrastructure as code with automated provisioning
-------IMPLEMENT 2-----  **Terraform Modules** – Modular, reusable, and environment-agnostic infrastructure components  
-
+  
 ### CI/CD GitOps & DevSecOps
 - **GitHub Actions** – Automated build, scan, and deploy pipelines
 - **OIDC Authentication** – Authenticate GitHub Actions to access AWS securely with short-lived credentials
 - **GitOps Workflow** – Git as the central source of truth for infrastructure and deployments  
-------IMPLEMENT 3------ **Trivy** – Vulnerability scanning for containers and filesystems
-  
+
 ### Containers & Application
 - **Docker** – Build and package applications in isolated containers
 - **ECS Task Definitions** – Define container runtime using declarative configurations
@@ -60,7 +58,6 @@ ecs-fargate-terraform-project
 └── terraform
     ├── ecr.tf
     ├── ecs.tf
-    ├── graph.png
     ├── iam.tf
     ├── outputs.tf
     ├── providers.tf
@@ -105,8 +102,21 @@ Running terraform destroy failed with error "ECR Repository not empty" because t
 **Solution:** 
 **Added force_delete = true* to the aws_ecr_repository resource in ecr.tf, ran terraform apply to update the resource configuration, then ran terraform destroy to successfully delete the repository with all images.
 
+---
+
+**Challenge:**  
+While testing the deployment pipeline, I forgot to manually destroy the infrastructure after once i was done testing. As humans we are prone to forget, relying on manual cleanup can easily lead to unnecessary cloud costs. 
+
+**Solution:** 
+As a solution, I introduced a timed delay followed by a terraform destroy command, ensuring that the infrastructure would be automatically removed after a fixed period. The pipeline meant that all provisioned resources were automatically removed even if I forgot. This practice is fine when testing. However you never ever want to automate terraform destroy for a production environment.
+
+
 ### Future improvements
-- Create separate dev, stage, and prod environments using Terraform workspaces
+- Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
 - Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards
+- Implement AN Application Load Balancer (ALB) for Traffic routing, health checks, and scalability
+- Incorporate Trivy for Vulnerability scanning for containers and filesystems  
+- Create separate dev, stage, and prod environments using Terraform workspaces
+
 
 
