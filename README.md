@@ -49,8 +49,8 @@ an application
 
 ## Project Structure
 ------IMPLEMENT 4 REPLACE THIS STRUCTURE BELOW------
-
-ecs-fargate-terraform
+```
+ecs-fargate-terraform-project
 ├── docker
 │   ├── Dockerfile
 │   └── program.py
