@@ -66,6 +66,7 @@ ecs-fargate-terraform-project
     ├── providers.tf
     ├── variables.tf
     └── vpc.tf
+```
 
 ### Build and push the Docker image: 
     cd docker
