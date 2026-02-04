@@ -12,7 +12,7 @@ resource "aws_ecs_service" "my_service" {
   launch_type = "FARGATE"
 
   network_configuration {
-    subnets          = [aws_subnet.public.id]  # Or use private subnet if you prefer
+    subnets          = subnets = aws_subnet.public[*].id # Or use private subnet if you prefer
     security_groups  = [aws_security_group.ecs_tasks.id]
     assign_public_ip = true
   }
