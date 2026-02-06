@@ -77,8 +77,7 @@ docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:la
 
 Amazon Elastic Container Registry (ECR) is used to securely store Docker images at scale, with access controlled via IAM.
 
-------IMPLEMENT 5 ------- Take a screen shot of [ECR > Private reg > Repository > images ]
-!INSERT IMAGE HERE
+![Diagram](https://github.com/DevOps-Abz/ecs-fargate-terraform/blob/main/images/AWS_ECR.png)
 
 Docker images are stored in Amazon Elastic Container Registry, providing secure, scalable image storage with IAM-based authentication.
 
