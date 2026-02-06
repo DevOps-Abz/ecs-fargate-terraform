@@ -47,7 +47,6 @@ A Python Application
 - **ECS Task Definitions** – Define container runtime using declarative configurations
 
 ## Project Structure
-------IMPLEMENT 4 REPLACE THIS STRUCTURE BELOW------
 ```
 ecs-fargate-terraform-project
 ├── docker
