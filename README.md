@@ -90,10 +90,10 @@ Docker images are stored in Amazon Elastic Container Registry, providing secure,
 ## Challenges & Solutions
 
 **Challenge:**  
-Created the GitHub OIDC provider and IAM role in AWS, but forgot to configure the role's trust policy to allow sts:AssumeRoleWithWebIdentity with the correct GitHub repository conditions.
+When deploying via GitHub Actions, the pipeline got stuck at the AWS credentials configuration stage due to an IAM OIDC trust policy error (sts:AssumeRoleWithWebIdentity).
 
 **Solution:**  
-Implemented the custom trust policy from GitHub Actions documentation to the IAM role, specifying the OIDC provider as the federated principal and including conditions for the correct audience (sts.amazonaws.com) and subject claim (repository path).
+To fix this issue, I referred to the GitHub Actions official Docs. I had to specify the IAM Role OIDC provider as the federated principle to include conditions for the correct audience.  This issue usually occurs when the trust policy conditions (audience or sub repository claim) are missing or misconfigured.
 
 ---
 
@@ -106,10 +106,10 @@ Running terraform destroy failed with error "ECR Repository not empty" because t
 ---
 
 **Challenge:**  
-While testing the deployment pipeline, I forgot to manually destroy the infrastructure after once i was done testing. As humans we are prone to forget, relying on manual cleanup can easily lead to unnecessary cloud costs. 
+Humans are prone to forget. While testing the deployment pipeline, I forgot to destroy the infrastructure after testing the deployment, which can easily lead to unnecessary cloud costs. 
 
 **Solution:** 
-As a solution, I introduced a timed delay followed by a terraform destroy command, ensuring that the infrastructure would be automatically removed after a fixed period. The pipeline meant that all provisioned resources were automatically removed even if I forgot. This practice is fine when testing. However you never ever want to automate terraform destroy for a production environment.
+I added a timed delay in the deploy.yaml script in order for terraform to destroy infrastructure if forgotten (after testing). This is useful for testing purpose, but never for production environment.
 
 
 ### Future improvements
