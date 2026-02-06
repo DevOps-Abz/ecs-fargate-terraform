@@ -31,6 +31,7 @@ A Python Application
 - **Amazon ECR** – Centralized and secure repository for Docker images
 - **AWS VPC** – Network isolation subnets for public and private resources
 - **AWS IAM** – Implemented IAM Role for GitHub Actions authentication via OIDC for secure, short-lived credentials
+- **Application Load Balancer (ALB)** – Traffic routing, health checks, and scalability
  
 
 ### Infrastructure as Code (IaC)
@@ -72,12 +73,14 @@ docker tag <image-name>:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<
 docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:latest
 
 
-##  Container Registry (ECR)
+##  Elastic Container Registry
 
-Docker images are hosted in Amazon Elastic Container Registry (ECR), enabling secure, scalable storage and access controlled by IAM.
+Amazon Elastic Container Registry (ECR) is used to securely store Docker images at scale, with access controlled via IAM.
 
 ------IMPLEMENT 5 ------- Take a screen shot of [ECR > Private reg > Repository > images ]
 !INSERT IMAGE HERE
+
+Docker images are stored in Amazon Elastic Container Registry, providing secure, scalable image storage with IAM-based authentication.
 
 **GitHub Actions Apply (`deploy.yaml`)**
 
@@ -114,7 +117,6 @@ As a solution, I introduced a timed delay followed by a terraform destroy comman
 ### Future improvements
 - Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
 - Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards
-- Implement AN Application Load Balancer (ALB) for Traffic routing, health checks, and scalability
 - Incorporate Trivy for Vulnerability scanning for containers and filesystems  
 - Create separate dev, stage, and prod environments using Terraform workspaces
 
