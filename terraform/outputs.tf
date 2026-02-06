@@ -29,6 +29,11 @@ output "ecs_service_name" {
   value       = aws_ecs_service.my_service.name
 }
 
+output "load_balancer_url" {
+  description = "The DNS name / URL of the Application Load Balancer"
+  value       = aws_lb.ecs_lb.dns_name
+}
+
 output "task_definition_arn" {
   description = "ARN of the task definition"
   value       = aws_ecs_task_definition.my_task.arn

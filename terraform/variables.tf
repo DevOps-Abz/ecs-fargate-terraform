@@ -33,11 +33,6 @@ variable "private_subnet_names" {
   type        = list(string)
   default     = ["private-subnet-1", "private-subnet-2"]
 }
-variable "availability_zone" {
-  description = "The availability zone for the subnets"
-  type        = string
-  default     = "us-east-1a"
-}
 variable "ecr_repository_name" {
   description = "The name of the ECR repository"
   type        = string
@@ -67,4 +62,9 @@ variable "container_name" {
   description = "The name of the container in the ECS task definition"
   type        = string
   default     = "my-container"
+}
+variable "container_port" {
+  description = "The port on which the container listens"
+  type        = number
+  default     = 80
 }
