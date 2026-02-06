@@ -8,7 +8,7 @@ This project demonstrates a production-focused AWS deployment that applies DevOp
 
 ## Architecture
 
-------IMPLEMENT FIRST----- 
+![Diagram](https://github.com/DevOps-Abz/ecs-fargate-terraform/blob/main/images/main-diagram.png)
 
 ## What is delpoyed?
 
