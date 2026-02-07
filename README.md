@@ -166,14 +166,6 @@ Humans are prone to forget. While testing the deployment pipeline, I forgot to d
 **Solution:**
 I added a timed delay in the deploy.yaml script in order for terraform to destroy infrastructure if forgotten (after testing). This is useful for testing purpose, but never for production environment.
 
----
-
-### Future improvements
-- Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
-- Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards
-- Incorporate Trivy for Vulnerability scanning for containers and filesystems  
-- Create separate dev, stage, and prod environments using Terraform workspaces
-
 ### Key Takeaways 
 
 **Unintended Costs from Git Pushes:** 
@@ -196,4 +188,12 @@ on:
 **Handling Terraform State Locks Safely:**
 
 Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a state lock for remote states (e.g., S3), which won’t release automatically. If interrupted, terraform destroy will fail until you run `terraform force-unlock <LOCK_ID>` if the state is locked. You might need to double-check if any resources are still running and delete them manually to avoid unnecessary costs.
+
+---
+
+### Future improvements
+- Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
+- Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards
+- Incorporate Trivy for Vulnerability scanning for containers and filesystems  
+- Create separate dev, stage, and prod environments using Terraform workspaces
 
