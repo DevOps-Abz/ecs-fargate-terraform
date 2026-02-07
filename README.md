@@ -138,26 +138,26 @@ Docker images are stored in Amazon Elastic Container Registry, providing secure,
 
 ## Challenges & Solutions
 
-**Challenge:**  
+**Challenge:**
 When deploying via GitHub Actions, the pipeline got stuck at the AWS credentials configuration stage due to an IAM OIDC trust policy error (sts:AssumeRoleWithWebIdentity).
 
-**Solution:**  
+**Solution:**
 To fix this issue, I referred to the GitHub Actions official Docs. I had to specify the IAM Role OIDC provider as the federated principle to include conditions for the correct audience.  This issue usually occurs when the trust policy conditions (audience or sub repository claim) are missing or misconfigured.
 
 ---
 
-**Challenge:**  
+**Challenge:**
 Running terraform destroy failed with error "ECR Repository not empty" because the repository contained Docker images that were pushed during deployment, and Terraform requires repositories to be empty before deletion by default.
 
-**Solution:** 
+**Solution:**
 **Added force_delete = true* to the aws_ecr_repository resource in ecr.tf, ran terraform apply to update the resource configuration, then ran terraform destroy to successfully delete the repository with all images.
 
 ---
 
-**Challenge:**  
+**Challenge:**
 Humans are prone to forget. While testing the deployment pipeline, I forgot to destroy the infrastructure after testing the deployment, which can easily lead to unnecessary cloud costs. 
 
-**Solution:** 
+**Solution:**
 I added a timed delay in the deploy.yaml script in order for terraform to destroy infrastructure if forgotten (after testing). This is useful for testing purpose, but never for production environment.
 
 ---
