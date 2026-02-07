@@ -18,7 +18,7 @@ This project demonstrates a production-focused AWS deployment that applies DevOp
 
 ## What is delpoyed?
 
-A Python Application 
+A simple Python application on AWS ECS Fargate that prints a "Hello World" message, pauses for 20 seconds, and then terminates, demonstrating containerized task execution in a serverless environment.
 
 ---
 
