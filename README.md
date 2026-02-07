@@ -90,14 +90,14 @@ ecs-fargate-terraform-project
 
 ### Build and push the Docker image: 
 
-# Build image locally
+**Build image**
 cd docker
 docker build -t my-app-repo:latest .
 
-# Tag image for ECR
+**Tag image for ECR**
 docker tag my-app-repo:latest <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/my-app-repo:latest
 
-# Push image to ECR
+**Push image to ECR**
 docker push <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/my-app-repo:latest
 
 ---
