@@ -173,6 +173,7 @@ I added a timed delay in the deploy.yaml script in order for terraform to destro
 **Unintended Costs from Git Pushes:** 
 Making any change to the repo can trigger GitHub Actions if the workflow runs on every push, which may deploy infrastructure unnecessarily. Best practice is to limit the workflow to infra-related files only, so you can safely push docs or README updates without triggering deployments.  
 
+```bash
 on:
   push:
     branches: [ main ]
@@ -182,6 +183,7 @@ on:
       - ".github/workflows/deploy.yaml"    # Trigger deploy if workflow itself changes
       - "!README.md"                       # Ignore README changes
       - "!images/**"                       # Ignore changes in images folder
+```
 
 **Handling Terraform State Locks Safely:**
 Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a state lock for remote states (e.g., S3), which won’t release automatically. If interrupted, terraform destroy will fail until you run terraform force-unlock <LOCK_ID>. Always let workflows finish or use a smaller test environment.
