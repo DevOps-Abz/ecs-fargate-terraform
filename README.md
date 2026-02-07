@@ -70,20 +70,26 @@ A Python Application
 ## Project Structure
 ```
 ecs-fargate-terraform-project
+├── .github
+│   └── workflows
+│       └── deploy.yml
 ├── docker
 │   ├── Dockerfile
 │   └── program.py
 ├── images
-├── LICENSE
-├── README.md
-└── terraform
-    ├── ecr.tf
-    ├── ecs.tf
-    ├── iam.tf
-    ├── outputs.tf
-    ├── providers.tf
-    ├── variables.tf
-    └── vpc.tf
+│   ├── ecr.png
+│   ├── git-actions-deploy-workflow.png
+│   └── main-diagram.png
+├── terraform
+│   ├── ecr.tf
+│   ├── ecs.tf
+│   ├── iam.tf
+│   ├── outputs.tf
+│   ├── providers.tf
+│   ├── variables.tf
+│   └── vpc.tf
+├── LICENSE.txt
+└── README.md
 ```
 
 ---
