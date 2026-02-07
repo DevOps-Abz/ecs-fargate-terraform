@@ -186,7 +186,6 @@ on:
       - "!images/**"                       # Ignore changes in images folder
 ```
 
----
 
 **Handling Terraform State Locks Safely:**
 
