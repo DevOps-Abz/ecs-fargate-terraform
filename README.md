@@ -1,18 +1,26 @@
 # Production-Ready CI/CD Deployment on AWS ECS Fargate
- ---
+
 A production-grade AWS ECS Fargate deployment featuring containerisation, Infrastructure as Code, GitOps practices, and secure CI/CD automation.
+
+---
 
 ##  Project Overview
 
 This project demonstrates a production-focused AWS deployment that applies DevOps best practices, automates infrastructure end to end, and enforces least-privilege security by design.
 
+---
+
 ## Architecture
 
 ![Diagram](https://github.com/DevOps-Abz/ecs-fargate-terraform/blob/main/images/main-diagram.png)
 
+---
+
 ## What is delpoyed?
 
 A Python Application 
+
+---
 
 ## Key Features & Implementation:
 
@@ -23,6 +31,8 @@ A Python Application
 - **Infrastructure as Code (IaC)** implemented using Terraform to provision and manage VPC, IAM, ECS, ALB, and related AWS resources
 
 - **GitOps workflow** where all infra and application changes are version-controlled and applied via Git commits and pull requests
+
+---
 
 ##  Tech Stack
 
@@ -37,18 +47,25 @@ A Python Application
 
 - **Application Load Balancer (ALB)** – Traffic routing, health checks, and scalability
  
+---
 
 ### Infrastructure as Code (IaC)
 - **Terraform** – Declarative AWS infrastructure as code with automated provisioning
+
+---
   
 ### CI/CD GitOps & DevSecOps
 - **GitHub Actions** – Automated build, scan, and deploy pipelines
 - **OIDC Authentication** – Authenticate GitHub Actions to access AWS securely with short-lived credentials
 - **GitOps Workflow** – Git as the central source of truth for infrastructure and deployments  
 
+---
+
 ### Containers & Application
 - **Docker** – Build and package applications in isolated containers
 - **ECS Task Definitions** – Define container runtime using declarative configurations
+
+---
 
 ## Project Structure
 ```
@@ -69,12 +86,15 @@ ecs-fargate-terraform-project
     └── vpc.tf
 ```
 
+---
+
 ### Build and push the Docker image: 
     cd docker
 docker build -t my-app-repo .
 docker tag <image-name>:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:latest
 docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:latest
 
+---
 
 ##  Elastic Container Registry
 
@@ -84,13 +104,31 @@ Amazon Elastic Container Registry (ECR) is used to securely store Docker images 
 
 Docker images are stored in Amazon Elastic Container Registry, providing secure, scalable image storage with IAM-based authentication.
 
+---
+
 **GitHub Actions Apply (`deploy.yaml`)**
 
 ![Diagram](https://github.com/DevOps-Abz/ecs-fargate-terraform/blob/main/images/git-actions-deploy-workflow.png)
 
    - Applies approved Terraform changes to provision/update AWS infrastructure  
    - Deploys updated containers to **AWS ECS Fargate**
-   
+
+---
+
+## Security & Compliance by Design
+
+- **OIDC authentication** integrates GitHub Actions with AWS IAM using short-lived credentials instead of stored access keys.
+
+- **Least-privilege IAM architecture** by design to ensure CI/CD workflows and ECS workloads only have the permissions they require. 
+
+- **GitHub Secrets Management** to avoid hard-coded credentials in code or pipelines.
+
+- **Isolated networking architecture** using public and private subnets, with ingress traffic governed by an Application Load Balancer.
+
+- **Auditability & Change Management** using GitOps workflows, to provide auditable history of infrastructure and to ensure all deployment changes are version-controlled in Git.
+
+---
+
 ## Challenges & Solutions
 
 **Challenge:**  
@@ -115,6 +153,7 @@ Humans are prone to forget. While testing the deployment pipeline, I forgot to d
 **Solution:** 
 I added a timed delay in the deploy.yaml script in order for terraform to destroy infrastructure if forgotten (after testing). This is useful for testing purpose, but never for production environment.
 
+---
 
 ### Future improvements
 - Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
