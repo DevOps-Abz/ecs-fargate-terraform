@@ -3,6 +3,12 @@ name: Deploy to AWS ECS
 on:
   push:
     branches: [ main ]
+    paths:
+      - "terraform/**"                     # Trigger deploy for Terraform changes
+      - "docker/**"                        # Trigger deploy for Docker changes
+      - ".github/workflows/deploy.yaml"    # Trigger deploy if workflow itself changes
+      - "!README.md"                        # Ignore README changes
+      - "!images/**"                        # Ignore changes in images folder
   #pull_request:
     #branches: [ main ]
 permissions:
