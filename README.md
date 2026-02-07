@@ -88,8 +88,6 @@ ecs-fargate-terraform-project
 
 ---
 
-### Build and push the Docker image: 
-
 ## Build and Push Docker Image to Amazon ECR
 
 ```bash
