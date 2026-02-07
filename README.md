@@ -88,7 +88,7 @@ ecs-fargate-terraform-project
 
 ---
 
-## Build and Push Docker Image to Amazon ECR
+## Build and Push Docker Image to ECR
 
 ```bash
 # Build the Docker image locally
@@ -168,5 +168,21 @@ I added a timed delay in the deploy.yaml script in order for terraform to destro
 - Incorporate Trivy for Vulnerability scanning for containers and filesystems  
 - Create separate dev, stage, and prod environments using Terraform workspaces
 
+### Key Takeaways 
 
+**Unintended Costs from Git Pushes:** 
+Making any change to the repo can trigger GitHub Actions if the workflow runs on every push, which may deploy infrastructure unnecessarily. Best practice is to limit the workflow to infra-related files only, so you can safely push docs or README updates without triggering deployments.  
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+     - "terraform/**"                      # Trigger deploy for Terraform changes
+      - "docker/**"                        # Trigger deploy for Docker changes
+      - ".github/workflows/deploy.yaml"    # Trigger deploy if workflow itself changes
+      - "!README.md"                       # Ignore README changes
+      - "!images/**"                       # Ignore changes in images folder
+
+**Handling Terraform State Locks Safely:**
+Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a state lock for remote states (e.g., S3), which won’t release automatically. If interrupted, terraform destroy will fail until you run terraform force-unlock <LOCK_ID>. Always let workflows finish or use a smaller test environment.
 
