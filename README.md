@@ -186,5 +186,5 @@ on:
 ```
 
 **Handling Terraform State Locks Safely:**
-Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a state lock for remote states (e.g., S3), which won’t release automatically. If interrupted, terraform destroy will fail until you run terraform force-unlock <LOCK_ID>. Always let workflows finish or use a smaller test environment.
+Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a state lock for remote states (e.g., S3), which won’t release automatically. If interrupted, terraform destroy will fail until you run terraform force-unlock <LOCK_ID>. 
 
