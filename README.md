@@ -28,9 +28,13 @@ A Python Application
 
 ### Cloud & Infrastructure
 - **AWS ECS Fargate** – Run containers in a fully managed, serverless environment
+
 - **Amazon ECR** – Centralized and secure repository for Docker images
+
 - **AWS VPC** – Network isolation subnets for public and private resources
+
 - **AWS IAM** – Implemented IAM Role for GitHub Actions authentication via OIDC for secure, short-lived credentials
+
 - **Application Load Balancer (ALB)** – Traffic routing, health checks, and scalability
  
 
