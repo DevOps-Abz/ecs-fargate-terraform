@@ -68,8 +68,8 @@ variable "container_port" {
   type        = number
   default     = 80
 }
-variable "test_variable" {
-  description = "This is a dummy variable for testing purposes"
-  type        = string
-  default     = "hello"
-}
+# variable "test_variable" {
+#   description = "This is a dummy variable for testing purposes"
+#   type        = string
+#   default     = "hello"
+# }
