@@ -25,7 +25,3 @@ resource "aws_lb_listener" "front_end" {
   }
 
 }
-resource "aws_cloudwatch_log_group" "ecs_logs" {
-  name              = "/ecs/my-container"
-  retention_in_days = 30
-}
