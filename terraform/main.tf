@@ -20,7 +20,7 @@ module "ecs" {
   ecs_security_group_id       = module.sg.ecs_security_group_id
   ecs_task_execution_role_arn = module.iam.ecs_task_execution_role_arn
   ecr_repository_url          = module.ecr.repository_url
-  container_image             = var.container_image
+  container_image             = "${module.ecr.repository_url}:latest"
 }
 
 module "iam" {
