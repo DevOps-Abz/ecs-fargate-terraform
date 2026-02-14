@@ -8,7 +8,7 @@ module "alb" {
 
 module "ecr" {
   source          = "./modules/ecr"
-  repository_name = "my_repository"
+  repository_name = "my-app-repo"
 }
 
 module "ecs" {
