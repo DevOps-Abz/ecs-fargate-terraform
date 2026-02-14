@@ -3,8 +3,8 @@ variable "repository_name" {
   type        = string
 }
 
-# variable "container_name" {
-#   description = "The name of the container in the ECS task definition"
-#   type        = string
-#   default     = "my-container"
-# }
+variable "container_test" {
+  description = "test"
+  type        = string
+  default     = "my-test"
+}
