@@ -3,8 +3,8 @@ variable "repository_name" {
   type        = string
 }
 
-# variable "container_test" {
-#   description = "test"
-#   type        = string
-#   default     = "my-test"
-# }
+variable "container_test" {
+  description = "test"
+  type        = string
+  default     = "my-test"
+}
