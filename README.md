@@ -69,10 +69,7 @@ A simple Python application on AWS ECS Fargate that prints a "Hello World" messa
 
 ## Project Structure
 ```
-ecs-fargate-terraform-project
-├── .github
-│   └── workflows
-│       └── deploy.yml
+.
 ├── docker
 │   ├── Dockerfile
 │   └── program.py
@@ -80,16 +77,38 @@ ecs-fargate-terraform-project
 │   ├── ecr.png
 │   ├── git-actions-deploy-workflow.png
 │   └── main-diagram.png
-├── terraform
-│   ├── ecr.tf
-│   ├── ecs.tf
-│   ├── iam.tf
-│   ├── outputs.tf
-│   ├── providers.tf
-│   ├── variables.tf
-│   └── vpc.tf
-├── LICENSE.txt
-└── README.md
+├── LICENSE
+├── README.md
+└── terraform
+    ├── errored.tfstate
+    ├── main.tf
+    ├── modules
+    │   ├── alb
+    │   │   ├── main.tf
+    │   │   ├── outputs.tf
+    │   │   └── variables.tf
+    │   ├── ecr
+    │   │   ├── main.tf
+    │   │   ├── output.tf
+    │   │   └── variables.tf
+    │   ├── ecs
+    │   │   ├── main.tf
+    │   │   ├── outputs.tf
+    │   │   └── variables.tf
+    │   ├── iam
+    │   │   ├── main.tf
+    │   │   ├── outputs.tf
+    │   │   └── variables.tf
+    │   ├── sg
+    │   │   ├── main.tf
+    │   │   ├── outputs.tf
+    │   │   └── variables.tf
+    │   └── vpc
+    │       ├── main.tf
+    │       ├── outputs.tf
+    │       └── variables.tf
+    ├── providers.tf
+    └── variables.tf
 ```
 
 ---
@@ -191,9 +210,7 @@ Never cancel a GitHub Actions workflow during terraform apply. Terraform uses a 
 
 ---
 
-### Future improvements
-- Use Terraform Modules for Modular, reusable, and environment-agnostic infrastructure components  
-- Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards
-- Incorporate Trivy for Vulnerability scanning for containers and filesystems  
+### Future improvements  
+- Set up better monitoring and alerts with CloudWatch or Prometheus/Grafana dashboards  
 - Create separate dev, stage, and prod environments using Terraform workspaces
 
